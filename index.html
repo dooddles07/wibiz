@@ -260,86 +260,120 @@
 
   <!-- ========== PRICING SECTION ========== -->
   <section id="pricing" class="pricing-section">
-    <div class="container">
-      <h2>Choose Your Plan</h2>
-      <p class="sub-headline">Start immediately. Complete onboarding only after payment. No calls required.</p>
+  <div class="container">
+    <h2>Choose Your Plan</h2>
+    <p class="sub-headline">Start immediately. Complete onboarding only after payment. No calls required.</p>
 
-      <div class="pricing-toggle-container">
-        <span class="toggle-label">Monthly</span>
-        <label class="switch">
-          <input type="checkbox" id="pricing-toggle">
-          <span class="slider"></span>
-        </label>
-        <span class="toggle-label">Yearly <small class="save-badge">(2 Months Free!)</small></span>
-      </div>
-
-      <div class="pricing-grid">
-
-        <!-- LITE -->
-        <div class="pricing-card" data-plan="lite">
-          <h3>SMB Lite</h3>
-          <p class="best-for">Getting Started with Automation</p>
-
-          <div class="price">
-            <span class="currency-symbol">$</span><span class="price-value">199</span><span class="price-period">/mo</span>
-          </div>
-
-          <div class="setup-fee">Setup Fee: $<span class="setup-value">499</span> one-time</div>
-
-          <ul class="pricing-features">
-            <li>1 Channel (Web, WhatsApp, or FB)</li>
-            <li>500 conversations/month</li>
-            <li>Industry Template Pack</li>
-          </ul>
-
-          <a href="#" class="btn btn-primary subscribe-btn" target="_blank" data-plan="lite">Get Started</a>
-        </div>
-
-        <!-- STANDARD -->
-        <div class="pricing-card featured" data-plan="standard">
-          <h3>SMB Standard</h3>
-          <p class="best-for">Clinics & Premium Services</p>
-
-          <div class="price">
-            <span class="currency-symbol">$</span><span class="price-value">299</span><span class="price-period">/mo</span>
-          </div>
-
-          <div class="setup-fee">Setup Fee: $<span class="setup-value">999</span> one-time</div>
-
-          <ul class="pricing-features">
-            <li>2 Channels</li>
-            <li>1,500 conversations/month</li>
-            <li>CRM & Pipeline Tagging</li>
-            <li>Payment Links (Stripe)</li>
-          </ul>
-
-          <a href="#" class="btn btn-primary subscribe-btn" target="_blank" data-plan="standard">Choose Standard</a>
-        </div>
-
-        <!-- PRO -->
-        <div class="pricing-card" data-plan="pro">
-          <h3>SMB Pro</h3>
-          <p class="best-for">A Fully Managed AI Workforce</p>
-
-          <div class="price">
-            <span class="currency-symbol">$</span><span class="price-value">499</span><span class="price-period">/mo</span>
-          </div>
-
-          <div class="setup-fee">Setup Fee: $<span class="setup-value">2500</span> one-time</div>
-
-          <ul class="pricing-features">
-            <li>3+ Channels</li>
-            <li>3,000–5,000 conversations/month</li>
-            <li>AI Voice Included</li>
-            <li>Priority SLA Support</li>
-          </ul>
-
-          <a href="#" class="btn btn-primary subscribe-btn" target="_blank" data-plan="pro">Select Pro</a>
-        </div>
-
-      </div>
+    <div class="pricing-toggle-container">
+      <span class="toggle-label">Monthly</span>
+      <label class="switch">
+        <input type="checkbox" id="pricing-toggle">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">Yearly <small class="save-badge">(2 Months Free!)</small></span>
     </div>
-  </section>
+
+    <div class="pricing-grid">
+
+      <!-- LITE -->
+      <div class="pricing-card" data-plan="lite">
+        <h3>SMB Lite</h3>
+        <p class="best-for">Getting Started with Automation</p>
+
+        <div class="price">
+          <span class="currency-symbol">$</span>
+          <span class="price-value" data-monthly="199" data-yearly="1990">199</span>
+          <span class="price-period">/mo</span>
+        </div>
+
+        <div class="setup-fee">Setup Fee: $<span class="setup-value">499</span> one-time</div>
+
+        <ul class="pricing-features">
+          <li>1 Channel (Web, WhatsApp, or FB)</li>
+          <li>500 conversations/month</li>
+          <li>Industry Template Pack</li>
+        </ul>
+
+        <a
+          href="https://api.wibiz.ai/payment-link/697c89516503caeb3c799a76"
+          class="btn btn-primary subscribe-btn"
+          target="_blank"
+          data-plan="lite"
+          data-monthly="https://api.wibiz.ai/payment-link/697c89516503caeb3c799a76"
+          data-yearly="https://api.wibiz.ai/payment-link/698465a23533385565c60fff"
+        >
+          Get Started
+        </a>
+      </div>
+
+      <!-- STANDARD -->
+      <div class="pricing-card featured" data-plan="standard">
+        <h3>SMB Standard</h3>
+        <p class="best-for">Clinics & Premium Services</p>
+
+        <div class="price">
+          <span class="currency-symbol">$</span>
+          <span class="price-value" data-monthly="299" data-yearly="2990">299</span>
+          <span class="price-period">/mo</span>
+        </div>
+
+        <div class="setup-fee">Setup Fee: $<span class="setup-value">999</span> one-time</div>
+
+        <ul class="pricing-features">
+          <li>2 Channels</li>
+          <li>1,500 conversations/month</li>
+          <li>CRM & Pipeline Tagging</li>
+          <li>Payment Links (Stripe)</li>
+        </ul>
+
+        <a
+          href="https://api.wibiz.ai/payment-link/6984673f5a761ec10806ebd8"
+          class="btn btn-primary subscribe-btn"
+          target="_blank"
+          data-plan="standard"
+          data-monthly="https://api.wibiz.ai/payment-link/6984673f5a761ec10806ebd8"
+          data-yearly="https://api.wibiz.ai/payment-link/6984662eddbe8f0213b41efb"
+        >
+          Choose Standard
+        </a>
+      </div>
+
+      <!-- PRO -->
+      <div class="pricing-card" data-plan="pro">
+        <h3>SMB Pro</h3>
+        <p class="best-for">A Fully Managed AI Workforce</p>
+
+        <div class="price">
+          <span class="currency-symbol">$</span>
+          <span class="price-value" data-monthly="499" data-yearly="4990">499</span>
+          <span class="price-period">/mo</span>
+        </div>
+
+        <div class="setup-fee">Setup Fee: $<span class="setup-value">2500</span> one-time</div>
+
+        <ul class="pricing-features">
+          <li>3+ Channels</li>
+          <li>3,000–5,000 conversations/month</li>
+          <li>AI Voice Included</li>
+          <li>Priority SLA Support</li>
+        </ul>
+
+        <a
+          href="https://api.wibiz.ai/payment-link/6984679a055d6b04a3c3b8f8"
+          class="btn btn-primary subscribe-btn"
+          target="_blank"
+          data-plan="pro"
+          data-monthly="https://api.wibiz.ai/payment-link/6984679a055d6b04a3c3b8f8"
+          data-yearly="https://api.wibiz.ai/payment-link/6984666d5a761e7bb106eac2"
+        >
+          Select Pro
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
   <!-- ========== JAVASCRIPT (IP BASED PRICING) ========== -->
   <script>
