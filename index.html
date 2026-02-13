@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WiBiz Pricing</title>
+
+  <style>
+    /* ========== GLOBAL STYLES ========== */
+    :root {
+      --wibiz-navy: #15283A;
+      --wibiz-bronze: #824600;
+      --wibiz-bronze-light: #a8641f;
+      --wibiz-bg-light: #f7f8fa;
+      --wibiz-border: #e5e7eb;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #ffffff;
+      margin: 0;
+    }
+
+    button, input, .btn, * { box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    /* ========== BUTTONS ========== */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--wibiz-bronze);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--wibiz-bronze-light);
+      transform: translateY(-2px);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(130, 70, 0, 0.35);
+    }
+
+    /* ========== PRICING SECTION ========== */
+    .pricing-section {
+      padding: 80px 0;
+      background: #f9fafb;
+    }
+
+    .pricing-section h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .pricing-section .sub-headline {
+      text-align: center;
+      color: #6b7280;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .pricing-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    .pricing-card.featured {
+      border: 3px solid var(--wibiz-bronze);
+    }
+
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--wibiz-bronze);
+      color: #fff;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .pricing-card .best-for {
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      min-height: 40px;
+    }
+
+    .pricing-card .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--wibiz-navy);
+      margin-bottom: 5px;
+    }
+
+    .pricing-card .price-period {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+
+    .setup-fee {
+      background: #fef3c7;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #92400e;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 30px 0;
+      padding: 0;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .pricing-features li:before {
+      content: '✓';
+      color: var(--wibiz-bronze);
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .pricing-card .btn { width: 100%; }
+
+    .pricing-toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .toggle-label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .save-badge {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+    }
+
+    .switch input { opacity: 0; width: 0; height: 0; }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider { background-color: var(--wibiz-navy); }
+
+    input:checked + .slider:before { transform: translateX(30px); }
+
+    @media (max-width: 768px) {
+      h2 { font-size: 1.8rem; }
+      .btn { width: 100%; max-width: 300px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== PRICING SECTION ========== -->
+  <section id="pricing" class="pricing-section">
+    <div class="container">
+      <h2>Choose Your Plan</h2>
+      <p class="sub-headline">Start immediately. Complete onboarding only after payment. No calls required.</p>
+
+      <div class="pricing-toggle-container">
+        <span class="toggle-label">Monthly</span>
+        <label class="switch">
+          <input type="checkbox" id="pricing-toggle">
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Yearly <small class="save-badge">(2 Months Free!)</small></span>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- LITE -->
+        <div class="pricing-card" data-plan="lite">
+          <h3>SMB Lite</h3>
+          <p class="best-for">Getting Started with Automation</p>
+
+          <div class="price">
+            <span class="currency-symbol">$</span><span class="price-value">199</span><span class="price-period">/mo</span>
+          </div>
+
+          <div class="setup-fee">Setup Fee: $<span class="setup-value">499</span> one-time</div>
+
+          <ul class="pricing-features">
+            <li>1 Channel (Web, WhatsApp, or FB)</li>
+            <li>500 conversations/month</li>
+            <li>Industry Template Pack</li>
+          </ul>
+
+          <a href="#" class="btn btn-primary subscribe-btn" target="_blank" data-plan="lite">Get Started</a>
+        </div>
+
+        <!-- STANDARD -->
+        <div class="pricing-card featured" data-plan="standard">
+          <h3>SMB Standard</h3>
+          <p class="best-for">Clinics & Premium Services</p>
+
+          <div class="price">
+            <span class="currency-symbol">$</span><span class="price-value">299</span><span class="price-period">/mo</span>
+          </div>
+
+          <div class="setup-fee">Setup Fee: $<span class="setup-value">999</span> one-time</div>
+
+          <ul class="pricing-features">
+            <li>2 Channels</li>
+            <li>1,500 conversations/month</li>
+            <li>CRM & Pipeline Tagging</li>
+            <li>Payment Links (Stripe)</li>
+          </ul>
+
+          <a href="#" class="btn btn-primary subscribe-btn" target="_blank" data-plan="standard">Choose Standard</a>
+        </div>
+
+        <!-- PRO -->
+        <div class="pricing-card" data-plan="pro">
+          <h3>SMB Pro</h3>
+          <p class="best-for">A Fully Managed AI Workforce</p>
+
+          <div class="price">
+            <span class="currency-symbol">$</span><span class="price-value">499</span><span class="price-period">/mo</span>
+          </div>
+
+          <div class="setup-fee">Setup Fee: $<span class="setup-value">2500</span> one-time</div>
+
+          <ul class="pricing-features">
+            <li>3+ Channels</li>
+            <li>3,000–5,000 conversations/month</li>
+            <li>AI Voice Included</li>
+            <li>Priority SLA Support</li>
+          </ul>
+
+          <a href="#" class="btn btn-primary subscribe-btn" target="_blank" data-plan="pro">Select Pro</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== JAVASCRIPT (IP BASED PRICING) ========== -->
+  <script>
+    (() => {
+      // =========================
+      // 1) COUNTRY LISTS (ISO2)
+      // =========================
+      const DEVELOPING = new Set([
+        "MY","TH","ID","PH","VN","KH","MM","LA",
+        "IN","PK","BD","LK","NP","CN",
+        "NG","KE","GH","ZA","EG","TZ","UG","ET","RW",
+        "BR","MX","CO","CL","AR","PE",
+        "TR","PL","RO"
+      ]);
+
+      const DEVELOPED = new Set([
+        "US","GB","AU","NZ","CA",
+        "DE","FR","NL","IE","BE","AT","IT","ES","CH","SE","NO","DK","FI",
+        "JP","KR","HK","TW",
+        "IL","AE","SA","QA","BH","KW"
+      ]);
+
+      const SINGAPORE = "SG";
+
+      function yearlyFromMonthly(m) { return m * 10; }
+
+      // =========================
+      // 2) PRICING CONFIG
+      //    Replace payment links below
+      // =========================
+      const PRICING = {
+        developed: {
+          currencySymbol: "$",
+          currencyCode: "USD",
+          monthly: { lite: 199, standard: 299, pro: 499 },
+          links: {
+            lite:     { monthly: "REPLACE_DEV_LITE_M", yearly: "REPLACE_DEV_LITE_Y" },
+            standard: { monthly: "REPLACE_DEV_STD_M",  yearly: "REPLACE_DEV_STD_Y"  },
+            pro:      { monthly: "REPLACE_DEV_PRO_M",  yearly: "REPLACE_DEV_PRO_Y"  }
+          }
+        },
+        developing: {
+          currencySymbol: "$",
+          currencyCode: "USD",
+          monthly: { lite: 99, standard: 149, pro: 249 },
+          links: {
+            lite:     { monthly: "REPLACE_DEVP_LITE_M", yearly: "REPLACE_DEVP_LITE_Y" },
+            standard: { monthly: "REPLACE_DEVP_STD_M",  yearly: "REPLACE_DEVP_STD_Y"  },
+            pro:      { monthly: "REPLACE_DEVP_PRO_M",  yearly: "REPLACE_DEVP_PRO_Y"  }
+          }
+        },
+        singapore: {
+          currencySymbol: "S$",
+          currencyCode: "SGD",
+          monthly: { lite: 199, standard: 299, pro: 499 },
+          links: {
+            lite:     { monthly: "REPLACE_SG_LITE_M", yearly: "REPLACE_SG_LITE_Y" },
+            standard: { monthly: "REPLACE_SG_STD_M",  yearly: "REPLACE_SG_STD_Y"  },
+            pro:      { monthly: "REPLACE_SG_PRO_M",  yearly: "REPLACE_SG_PRO_Y"  }
+          }
+        }
+      };
+
+      // =========================
+      // 3) GEO DETECTION
+      //    Cloudflare -> fallback ipapi
+      // =========================
+      async function getCountryFromCloudflareTrace() {
+        const res = await fetch("/cdn-cgi/trace", { cache: "no-store" });
+        if (!res.ok) throw new Error("No Cloudflare trace");
+        const txt = await res.text();
+        const m = txt.match(/\bloc=([A-Z]{2})\b/);
+        if (!m) throw new Error("No loc in trace");
+        return m[1];
+      }
+
+      async function getCountryFromIpApi() {
+        const res = await fetch("https://ipapi.co/country/", { cache: "no-store" });
+        const code = (await res.text()).trim().toUpperCase();
+        if (!code) throw new Error("Empty ipapi country");
+        return code;
+      }
+
+      async function detectCountry() {
+        // 24h cache
+        try {
+          const raw = localStorage.getItem("wibiz_country_cache");
+          if (raw) {
+            const obj = JSON.parse(raw);
+            if (obj.code && obj.exp && Date.now() < obj.exp) return obj.code;
+          }
+        } catch {}
+
+        let code = "";
+        try {
+          code = await getCountryFromCloudflareTrace();
+        } catch {
+          code = await getCountryFromIpApi();
+        }
+
+        try {
+          localStorage.setItem("wibiz_country_cache", JSON.stringify({
+            code,
+            exp: Date.now() + 24 * 60 * 60 * 1000
+          }));
+        } catch {}
+
+        return code || "US";
+      }
+
+      function segmentForCountry(code) {
+        if (code === SINGAPORE) return "singapore";
+        if (DEVELOPING.has(code)) return "developing";
+        if (DEVELOPED.has(code)) return "developed";
+        // fallback to developed (rule)
+        return "developed";
+      }
+
+      // =========================
+      // 4) APPLY PRICING
+      // =========================
+      function applyPricing(segmentKey) {
+        const cfg = PRICING[segmentKey] || PRICING.developed;
+        const toggle = document.getElementById("pricing-toggle");
+        const isYearly = !!toggle?.checked;
+
+        document.querySelectorAll(".pricing-card[data-plan]").forEach(card => {
+          const plan = card.getAttribute("data-plan");
+          const monthlyPrice = cfg.monthly[plan];
+          if (typeof monthlyPrice !== "number") return;
+
+          const price = isYearly ? yearlyFromMonthly(monthlyPrice) : monthlyPrice;
+
+          const sym = card.querySelector(".currency-symbol");
+          if (sym) sym.textContent = cfg.currencySymbol;
+
+          const val = card.querySelector(".price-value");
+          if (val) val.textContent = String(price);
+
+          const period = card.querySelector(".price-period");
+          if (period) period.textContent = isYearly ? "/yr" : "/mo";
+
+          const btn = card.querySelector(`.subscribe-btn[data-plan="${plan}"]`) || card.querySelector(".subscribe-btn");
+          if (btn) {
+            const linkSet = cfg.links[plan];
+            if (linkSet) {
+              btn.href = isYearly ? linkSet.yearly : linkSet.monthly;
+            }
+          }
+        });
+      }
+
+      function wireToggle() {
+        const toggle = document.getElementById("pricing-toggle");
+        if (!toggle) return;
+
+        toggle.addEventListener("change", () => {
+          applyPricing(window.__wibizPricingSegment || "developed");
+        });
+      }
+
+      // =========================
+      // 5) INIT
+      //    Yearly default ON
+      // =========================
+      document.addEventListener("DOMContentLoaded", async () => {
+        const toggle = document.getElementById("pricing-toggle");
+        if (toggle) toggle.checked = true;
+
+        wireToggle();
+
+        let country = "US";
+        try { country = await detectCountry(); } catch {}
+
+        const segment = segmentForCountry(country);
+        window.__wibizPricingSegment = segment;
+
+        applyPricing(segment);
+      });
+    })();
+  </script>
+
+  <!-- OPTIONAL: GHL Chat Widget loader (keep if needed) -->
+  <script
+    src="https://widgets.leadconnectorhq.com/loader.js"
+    data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+    data-widget-id="698709a5e64c73e4a4d5cfb5">
+  </script>
+
+</body>
+</html>
