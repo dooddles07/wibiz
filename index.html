@@ -392,9 +392,9 @@
           }
         },
         singapore: {
-          currencySymbol: "S$",
-          currencyCode: "SGD",
-          monthly: { lite: 199, standard: 299, pro: 499 },
+          currencySymbol: "$",
+          currencyCode: "USD",
+          monthly: { lite: 199, standard: 149, pro: 249 },
           links: {
             lite:     { monthly: "REPLACE_SG_LITE_M", yearly: "REPLACE_SG_LITE_Y" },
             standard: { monthly: "REPLACE_SG_STD_M",  yearly: "REPLACE_SG_STD_Y"  },
@@ -424,28 +424,12 @@
       }
 
       async function detectCountry() {
-        // 24h cache
-        try {
-          const raw = localStorage.getItem("wibiz_country_cache");
-          if (raw) {
-            const obj = JSON.parse(raw);
-            if (obj.code && obj.exp && Date.now() < obj.exp) return obj.code;
-          }
-        } catch {}
-
         let code = "";
         try {
           code = await getCountryFromCloudflareTrace();
         } catch {
           code = await getCountryFromIpApi();
         }
-
-        try {
-          localStorage.setItem("wibiz_country_cache", JSON.stringify({
-            code,
-            exp: Date.now() + 24 * 60 * 60 * 1000
-          }));
-        } catch {}
 
         return code || "US";
       }
